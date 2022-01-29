@@ -35,4 +35,4 @@ var copy = function (src, dest) {
   oldFile.pipe(newFile);
 };
 
-copyDir("./src", "../../template");
+copyDir(__dirname + "/../src", "./template");
