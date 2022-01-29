@@ -5,6 +5,8 @@
 // import Links from "./components/Links";
 // import Contacts from "./components/Contacts";
 
+const { useAppData } = global.providers;
+
 const BoxHead = function (props) {
   return (
     <div
@@ -22,7 +24,8 @@ const BoxHead = function (props) {
 };
 
 const Footer = () => {
-  
+  const { data } = useAppData();
+
   return (
     <>
       <div
@@ -33,23 +36,17 @@ const Footer = () => {
         <div c="true">
           <div className="A4 | flex dir-col gap-2b" p="struct">
             <div b="true"></div>
-            <div c="true">
-            
-            </div>
+            <div c="true"></div>
           </div>
 
           <div className="A4 | flex dir-col gap-2b | sm:order-3" p="struct">
             <div b="true"></div>
-            <div c="true">
-           
-            </div>
+            <div c="true"></div>
           </div>
 
           <div className="A4 | flex dir-col gap-2b | lg:order-4" p="struct">
             <div b="true"></div>
-            <div c="true">
-         
-            </div>
+            <div c="true"></div>
           </div>
           <div
             className="A4 | flex dir-col gap-2b | lg:order-3 sm:order-2"
@@ -58,9 +55,7 @@ const Footer = () => {
             <div b="true"></div>
             <div c="true">
               <div className="" p="text">
-                <div c="true">
-                  {global.teste}
-                </div>
+                <div c="true">{data.key}</div>
               </div>
             </div>
           </div>
