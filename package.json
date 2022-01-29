@@ -29,6 +29,8 @@
     "ts-node-dev": "^1.0.0-pre.49",
     "tsconfig-paths": "^3.9.0",
     "typescript": "4.4.4"
+  },
+  "bin": {
+    "template": "bin/template.js"
   }
- 
 }
