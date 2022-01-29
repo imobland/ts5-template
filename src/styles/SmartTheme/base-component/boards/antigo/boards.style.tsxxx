@@ -1,0 +1,442 @@
+// import LabelColors from "../../_root-config/colors/labelColors";
+
+const css = function (props) {
+  //
+  const { colors } = props.ThemeConfig;
+
+  // Escala 1.333 x
+  const radiusString = `
+    :root {
+      --b-radius-0: 22.44px;
+      --b-radius-1: 16.83px;
+      --b-radius-2: 12.62px;
+      --b-radius-3: 9.47px;
+      --b-radius-4: 7.1px;
+      --b-radius-5: 5.33px;
+      --b-radius-6: 4px;
+      --b-radius-none: 0px;
+    }
+  `;
+
+  const gerarBgs = function (state) {
+    //
+    let str = "";
+    let stateSelector, statePre;
+
+    if (state == "normal") {
+      stateSelector = "";
+      statePre = "";
+    } else if (state == "hover") {
+      stateSelector = ":hover";
+      statePre = "hover\\:";
+    } else if (state == "active") {
+      stateSelector = ":active";
+      statePre = "active\\:";
+    }
+
+    for (const key in LabelColors) {
+      //
+      let obj = LabelColors[key];
+
+      str = str.concat(`
+        .${statePre}bg-${key}${stateSelector} {
+          --bg-c: var(--${key});
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-D1${stateSelector} {
+          --bg-c: var(--${key}-D1);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-D2${stateSelector} {
+          --bg-c: var(--${key}-D2);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-D3${stateSelector} {
+          --bg-c: var(--${key}-D3);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-L1${stateSelector} {
+          --bg-c: var(--${key}-L1);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-L2${stateSelector} {
+          --bg-c: var(--${key}-L2);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-L3${stateSelector} {
+          --bg-c: var(--${key}-L3);
+          --bg-cc: var(--${key}-contrast);
+        }
+        .${statePre}bg-${key}-P1${stateSelector} {
+          --bg-c: var(--${key}-P1);
+        }
+        .${statePre}bg-${key}-P2${stateSelector} {
+          --bg-c: var(--${key}-P2);
+        }
+        .${statePre}bg-${key}-P3${stateSelector} {
+          --bg-c: var(--${key}-P3);
+        }
+        .${statePre}bg-${key}-V${stateSelector} {
+          --bg-c: var(--${key}-V);
+        }
+
+
+
+        // BEVEL ----------------
+
+        .${statePre}bevel-${key}${stateSelector} >[b]:after {
+          --bevel-c: var(--${key});
+        }
+        .${statePre}bevel-${key}-D1${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-D1);
+        }
+        .${statePre}bevel-${key}-D2${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-D2);
+        }
+        .${statePre}bevel-${key}-D3${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-D3);
+        }
+        .${statePre}bevel-${key}-L1${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-L1);
+        }
+        .${statePre}bevel-${key}-L2${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-L2);
+        }
+        .${statePre}bevel-${key}-L3${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-L3);
+        }
+        .${statePre}bevel-${key}-P1${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-P1);
+        }
+        .${statePre}bevel-${key}-P2${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-P2);
+        }
+        .${statePre}bevel-${key}-P3${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-P3);
+        }
+        .${statePre}bevel-${key}-V${stateSelector} >[b]:after {
+          --bevel-c: var(--${key}-V);
+        }
+
+        
+        // OVERLAY ----------------
+
+        .${statePre}overlay-${key}${stateSelector} >[b]:after {
+          --overlay-c: var(--${key});
+        }
+        .${statePre}overlay-${key}-D1${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-D1);
+        }
+        .${statePre}overlay-${key}-D2${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-D2);
+        }
+        .${statePre}overlay-${key}-D3${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-D3);
+        }
+        .${statePre}overlay-${key}-L1${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-L1);
+        }
+        .${statePre}overlay-${key}-L2${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-L2);
+        }
+        .${statePre}overlay-${key}-L3${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-L3);
+        }
+        .${statePre}overlay-${key}-P1${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-P1);
+        }
+        .${statePre}overlay-${key}-P2${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-P2);
+        }
+        .${statePre}overlay-${key}-P3${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-P3);
+        }
+        .${statePre}overlay-${key}-V${stateSelector} >[b]:after {
+          --overlay-c: var(--${key}-V);
+        }
+
+
+
+        // gradient ========
+
+        .${statePre}bg-gradient-${key}${stateSelector} {
+          --bg-gradient-c: var(--${key});
+        }
+        .${statePre}bg-gradient-${key}-D1${stateSelector} {
+          --bg-gradient-c: var(--${key}-D1);
+        }
+        .${statePre}bg-gradient-${key}-D2${stateSelector} {
+          --bg-gradient-c: var(--${key}-D2);
+        }
+        .${statePre}bg-gradient-${key}-D3${stateSelector} {
+          --bg-gradient-c: var(--${key}-D3);
+        }
+        .${statePre}bg-gradient-${key}-L1${stateSelector} {
+          --bg-gradient-c: var(--${key}-L1);
+        }
+        .${statePre}bg-gradient-${key}-L2${stateSelector} {
+          --bg-gradient-c: var(--${key}-L2);
+        }
+        .${statePre}bg-gradient-${key}-L3${stateSelector} {
+          --bg-gradient-c: var(--${key}-L3);
+        }
+        .${statePre}bg-gradient-${key}-P1${stateSelector} {
+          --bg-gradient-c: var(--${key}-P1);
+        }
+        .${statePre}bg-gradient-${key}-P2${stateSelector} {
+          --bg-gradient-c: var(--${key}-P2);
+        }
+        .${statePre}bg-gradient-${key}-P3${stateSelector} {
+          --bg-gradient-c: var(--${key}-P3);
+        }
+        .${statePre}bg-gradient-${key}-V${stateSelector} {
+          --bg-gradient-c: var(--${key}-V);
+        }
+        
+        .${statePre}bg-gradient-${key}-A1${stateSelector} {
+          --bg-gradient-c: var(--${key}-A1);
+        }
+        .${statePre}bg-gradient-${key}-A2${stateSelector} {
+          --bg-gradient-c: var(--${key}-A2);
+        }
+        .${statePre}bg-gradient-${key}-A3${stateSelector} {
+          --bg-gradient-c: var(--${key}-A3);
+        }
+      `);
+    }
+    return str;
+  };
+
+  let bgString =
+    gerarBgs("normal") + gerarBgs("hover") + gerarBgs("active");
+
+  return `
+    
+    ${radiusString}
+
+    ${bgString}
+
+    .box, 
+    .bel {
+      --c: var(--bg-cc);
+      --bg-deg: 105deg;
+      --bvl-deg: 90deg;
+
+      > [b] {
+        background: var(--bg-c);
+        border-radius: var(--b-radius);
+        border-top-left-radius: var(--b-radius-tl);
+        border-top-right-radius: var(--b-radius-tr);
+        border-bottom-left-radius: var(--b-radius-bl);
+        border-bottom-right-radius: var(--b-radius-br);
+        overflow: hidden;
+        transition: all .15s ease;
+        box-shadow: 10px 10px 10px #0001;
+      }
+    }
+
+    .gradient{
+
+      >[b]{
+        background-image: linear-gradient( var(--bg-deg), var(--bg-c), var(--bg-gradient-c) );
+      }
+    }
+    .gradient-over{
+      >[b]{
+        &:after {
+          content: "";
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          position: absolute;
+          
+          background-image: linear-gradient( var(--bg-deg), transparent, var(--bg-gradient-c) );
+        }
+      }
+    }
+
+    .gradient-0deg{  --bg-deg: 0deg;  }
+    .gradient-45deg{  --bg-deg: 45deg;  }
+    .gradient-90deg{  --bg-deg: 90deg;  }
+    .gradient-135deg{  --bg-deg: 135deg;  }
+    .gradient-180deg{  --bg-deg: 180deg;  }
+    .gradient-225deg{  --bg-deg: 225deg;  }
+    .gradient-270deg{  --bg-deg: 270deg;  }
+    .gradient-315deg{  --bg-deg: 315deg;  }
+    .gradient-360deg{  --bg-deg: 360deg;  }
+
+
+
+
+    
+    .overlay > [b]:before{
+      content: "";
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      background: var(--overlay-c);
+      z-index: 1;
+      opacity: .5;
+      border-top-left-radius: var(--b-radius-tl);
+      border-top-right-radius: var(--b-radius-tr);
+      border-bottom-left-radius: var(--b-radius-bl);
+      border-bottom-right-radius: var(--b-radius-br);
+      transition: all .5s ease;
+    }
+    .overlay-board-only > [b]:before{
+      z-index: inherit;
+    }
+
+    .bevel > [b]:after{
+      content: "";
+      display: block;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      border-top-left-radius: var(--b-radius-tl);
+      border-top-right-radius: var(--b-radius-tr);
+      border-bottom-left-radius: var(--b-radius-bl);
+      border-bottom-right-radius: var(--b-radius-br);
+      opacity: .5;
+      background: linear-gradient(var(--bvl-deg), var(--bevel-c), transparent);
+    }
+    .bevel-split > [b]:after{
+      background: linear-gradient(var(--bvl-deg), var(--bevel-c) 50%, transparent 50%);
+    }
+    .bevel-over-content > [b]:after {
+      z-index: 1;
+    }
+    
+    .bevel-0deg{  --bvl-deg: 0deg;  }
+    .bevel-45deg{  --bvl-deg: 45deg;  }
+    .bevel-90deg{  --bvl-deg: 90deg;  }
+    .bevel-135deg{  --bvl-deg: 135deg;  }
+    .bevel-180deg{  --bvl-deg: 180deg;  }
+    .bevel-225deg{  --bvl-deg: 225deg;  }
+    .bevel-270deg{  --bvl-deg: 270deg;  }
+    .bevel-315deg{  --bvl-deg: 315deg;  }
+    .bevel-360deg{  --bvl-deg: 360deg;  }
+
+    .bevel-radial > [b]:after{
+      background: radial-gradient(transparent, transparent, var(--bevel-c));
+    }
+
+    .overlay-filter-saturate-150 >[b]:before{ backdrop-filter: saturate(1.5); }
+    .overlay-filter-saturate-200 >[b]:before{ backdrop-filter: saturate(2); }
+    .overlay-filter-saturate-250 >[b]:before{ backdrop-filter: saturate(2.5); }
+    
+    .overlay-filter-blur-2 >[b]:before{ backdrop-filter: blur(2rem); }
+    .overlay-filter-blur-5 >[b]:before{ backdrop-filter: blur(5rem); }
+    .overlay-filter-blur-10 >[b]:before{ backdrop-filter: blur(10rem); }
+    .overlay-filter-blur-20 >[b]:before{ backdrop-filter: blur(20rem); }
+
+    .overlay-filter-contrast-20 >[b]:before{ backdrop-filter: contrast(0.2); }
+    .overlay-filter-contrast-40 >[b]:before{ backdrop-filter: contrast(0.4); }
+    .overlay-filter-contrast-60 >[b]:before{ backdrop-filter: contrast(0.6); }
+    .overlay-filter-contrast-80 >[b]:before{ backdrop-filter: contrast(0.8); }
+    .overlay-filter-contrast-100 >[b]:before{ backdrop-filter: contrast(1); }
+    .overlay-filter-contrast-150 >[b]:before{ backdrop-filter: contrast(1.5); }
+    .overlay-filter-contrast-200 >[b]:before{ backdrop-filter: contrast(2); }
+      
+    .overlay-filter-brightness-20 >[b]:before{ backdrop-filter: brightness(0.2); }
+    .overlay-filter-brightness-40 >[b]:before{ backdrop-filter: brightness(0.4); }
+    .overlay-filter-brightness-60 >[b]:before{ backdrop-filter: brightness(0.6); }
+    .overlay-filter-brightness-80 >[b]:before{ backdrop-filter: brightness(0.8); }
+    .overlay-filter-brightness-100 >[b]:before{ backdrop-filter: brightness(1); }
+    .overlay-filter-brightness-150 >[b]:before{ backdrop-filter: brightness(1.5); }
+    .overlay-filter-brightness-200 >[b]:before{ backdrop-filter: brightness(2); }
+        
+    .overlay-filter-saturation-0 >[b]:before{ backdrop-filter: saturate(.0); }
+    .overlay-filter-saturation-20 >[b]:before{ backdrop-filter: saturate(.2); }
+    .overlay-filter-saturation-40 >[b]:before{ backdrop-filter: saturate(.4); }
+    .overlay-filter-saturation-60 >[b]:before{ backdrop-filter: saturate(.6); }
+    .overlay-filter-saturation-80 >[b]:before{ backdrop-filter: saturate(.8); }
+    .overlay-filter-saturation-100 >[b]:before{ backdrop-filter: saturate(1); }
+    .overlay-filter-saturation-120 >[b]:before{ backdrop-filter: saturate(1.2) }
+    .overlay-filter-saturation-140 >[b]:before{ backdrop-filter: saturate(1.4); }
+    .overlay-filter-saturation-160 >[b]:before{ backdrop-filter: saturate(1.6); }
+    .overlay-filter-saturation-180 >[b]:before{ backdrop-filter: saturate(1.8); }
+    .overlay-filter-saturation-200 >[b]:before{ backdrop-filter: saturate(2); }
+
+    .overlay-filter-hue-rotate-45 >[b]:before{ backdrop-filter: hue-rotate(45deg); }
+    .overlay-filter-hue-rotate-90 >[b]:before{ backdrop-filter: hue-rotate(90deg); }
+    .overlay-filter-hue-rotate-135 >[b]:before{ backdrop-filter: hue-rotate(135deg); }
+    .overlay-filter-hue-rotate-180 >[b]:before{ backdrop-filter: hue-rotate(180deg); }
+    .overlay-filter-hue-rotate-225 >[b]:before{ backdrop-filter: hue-rotate(225deg); }
+    .overlay-filter-hue-rotate-270 >[b]:before{ backdrop-filter: hue-rotate(270deg); }
+    .overlay-filter-hue-rotate-315 >[b]:before{ backdrop-filter: hue-rotate(315deg); }
+    .overlay-filter-hue-rotate-360 >[b]:before{ backdrop-filter: hue-rotate(360deg); }
+
+    .overlay-alpha-0 > [b]:before, .bevel-alpha-0 > [b]:after {  opacity: 0;  }
+    .overlay-alpha-10 > [b]:before, .bevel-alpha-10 > [b]:after {  opacity: 0.1;  }
+    .overlay-alpha-20 > [b]:before, .bevel-alpha-20 > [b]:after {  opacity: 0.2;  }
+    .overlay-alpha-30 > [b]:before, .bevel-alpha-30 > [b]:after {  opacity: 0.3;  }
+    .overlay-alpha-40 > [b]:before, .bevel-alpha-40 > [b]:after {  opacity: 0.4;  }
+    .overlay-alpha-50 > [b]:before, .bevel-alpha-50 > [b]:after {  opacity: 0.5;  }
+    .overlay-alpha-60 > [b]:before, .bevel-alpha-60 > [b]:after {  opacity: 0.6;  }
+    .overlay-alpha-70 > [b]:before, .bevel-alpha-70 > [b]:after {  opacity: 0.7;  }
+    .overlay-alpha-80 > [b]:before, .bevel-alpha-80 > [b]:after {  opacity: 0.8;  }
+    .overlay-alpha-90 > [b]:before, .bevel-alpha-90 > [b]:after {  opacity: 0.9;  }
+    .overlay-alpha-100 > [b]:before, .bevel-alpha-100 > [b]:after {  opacity: 1;  }
+    
+    .bevel-mix-hard-light > [b]:after{  mix-blend-mode: hard-light; }
+    .bevel-mix-color > [b]:after{  mix-blend-mode:color; }
+    .bevel-mix-color-burn > [b]:after{  mix-blend-mode: color-burn; }
+    .bevel-mix-hard-light > [b]:after{  mix-blend-mode: hard-light; }
+    .bevel-mix-color-dodge > [b]:after{  mix-blend-mode:color-dodge; }
+    .bevel-mix-darken > [b]:after{  mix-blend-mode: darken; }
+    .bevel-mix-difference > [b]:after{  mix-blend-mode: difference; }
+    .bevel-mix-exclusion > [b]:after{  mix-blend-mode: exclusion; }
+    .bevel-mix-hue > [b]:after{  mix-blend-mode: hue; }
+    .bevel-mix-lighten > [b]:after{  mix-blend-mode:  lighten; }
+    .bevel-mix-luminosity > [b]:after{  mix-blend-mode:  luminosity; }
+    .bevel-mix-multiply > [b]:after{  mix-blend-mode:   multiply; }
+    .bevel-mix-soft-light > [b]:after{  mix-blend-mode:  soft-light; }
+
+    .overlay-mix-hard-light > [b]:before{  mix-blend-mode: hard-light; }
+    .overlay-mix-color > [b]:before{  mix-blend-mode:color; }
+    .overlay-mix-color-burn > [b]:before{  mix-blend-mode: color-burn; }
+    .overlay-mix-hard-light > [b]:before{  mix-blend-mode: hard-light; }
+    .overlay-mix-hard-light > [b]:before{  mix-blend-mode: hard-light; }
+    .overlay-mix-color-dodge > [b]:before{  mix-blend-mode:color-dodge; }
+    .overlay-mix-darken > [b]:before{  mix-blend-mode: darken; }
+    .overlay-mix-difference > [b]:before{  mix-blend-mode: difference; }
+    .overlay-mix-exclusion > [b]:before{  mix-blend-mode: exclusion; }
+    .overlay-mix-hue > [b]:before{  mix-blend-mode: hue; }
+    .overlay-mix-lighten > [b]:before{  mix-blend-mode:  lighten; }
+    .overlay-mix-luminosity > [b]:before{  mix-blend-mode:  luminosity; }
+    .overlay-mix-multiply > [b]:before{  mix-blend-mode:   multiply; }
+    .overlay-mix-soft-light > [b]:before{  mix-blend-mode:  soft-light; }
+    
+    
+        
+        
+    .bevel-over-content > [b]:after {
+      z-index: 1;
+    }
+    .overlay-board-only > [b]:before{
+      z-index: inherit;
+    }
+
+    .board-in-piece {
+        background: var(--bg-c);
+        
+        > [b] {
+            display: none;
+        }
+    }
+
+    .bg-none > [b]{
+        display: none;
+    }
+    
+  `;
+};
+
+export default css;
